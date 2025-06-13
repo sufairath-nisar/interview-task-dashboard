@@ -19,7 +19,7 @@
     "incremental": true,
     "types": [
       "node"
-    ], // ✅ Add this line
+    ], 
     "plugins": [
       {
         "name": "next"
@@ -33,13 +33,13 @@
   },
   "include": [
     "next-env.d.ts",
-    "src", // ✅ Better than "**/*.ts" – keeps to your `src/` only
-    "types" // Optional: if you have a global `types/` folder
+    "src", 
+    "types" 
     ,
     ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    ".next" // ✅ Exclude .next to avoid bad cached types
+    ".next" 
   ]
 }

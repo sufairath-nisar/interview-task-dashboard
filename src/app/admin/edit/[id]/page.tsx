@@ -1,7 +1,6 @@
 import { getPostById } from "@/lib/api";
 import PostForm from "@/components/posts/PostForm";
 
-// ✅ Correct explicit prop type
 export default async function EditPostPage({
   params,
 }: {

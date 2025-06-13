@@ -56,7 +56,11 @@ All data is mock, ideal for testing UI and CRUD workflows.
 
 🔗 Live Demo
 Deployed on Vercel:
-🌍 https://your-dashboard.vercel.app (replace with real link)
+🌍 Public Site: https://interview-task-dashboard-git-main-sufairaths-projects.vercel.app
+
+Admin Dashboard: https://interview-task-dashboard-git-main-sufairaths-projects.vercel.app/admin
+
+
 
 🙋‍♀️ Author
 Sufairath Nisar
