@@ -1,12 +1,16 @@
-import PostForm from "@/components/posts/PostForm";
 import { getPostById } from "@/lib/api";
+import PostForm from "@/components/posts/PostForm";
 
-export default async function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;  // Await params here
-  const post = await getPostById(id);
+// ✅ Correct explicit prop type
+export default async function EditPostPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const post = await getPostById(params.id);
 
   if (!post || post.id === undefined) {
-    return <div>Post not found.</div>;
+    return <div>Post not found</div>;
   }
 
   return (

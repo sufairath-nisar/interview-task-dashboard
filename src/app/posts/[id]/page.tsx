@@ -1,9 +1,10 @@
-// app/posts/[id]/page.tsx
 import { getPostById, getPosts } from "@/lib/api";
 import { notFound } from "next/navigation";
 
 interface PageProps {
-  params: { id: string };
+  params: {
+    id: string;
+  };
 }
 
 export async function generateStaticParams() {
