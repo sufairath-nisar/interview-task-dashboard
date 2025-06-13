@@ -2,6 +2,10 @@
 import { getPostById, getPosts } from "@/lib/api";
 import { notFound } from "next/navigation";
 
+interface PageProps {
+  params: { id: string };
+}
+
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({
@@ -9,7 +13,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: PageProps) {
   const post = await getPostById(params.id);
 
   if (!post || post.id === undefined) {
