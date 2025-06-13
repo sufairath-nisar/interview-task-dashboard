@@ -1,14 +1,23 @@
-// app/posts/[id]/page.tsx
-import React from "react";
+// src/app/posts/[id]/page.tsx
 import { getPostById, getPosts } from "@/lib/api";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
-type PageProps = {
+type PageParams = {
   params: {
     id: string;
   };
 };
 
+// Optional: for SEO
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+  const post = await getPostById(params.id);
+  return {
+    title: post?.title || "Post Not Found",
+  };
+}
+
+// Required for static generation
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({
@@ -16,7 +25,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostDetails({ params }: PageProps): Promise<React.ReactElement> {
+// Page component
+export default async function PostDetails({ params }: PageParams) {
   const post = await getPostById(params.id);
 
   if (!post || post.id === undefined) {
@@ -26,10 +36,7 @@ export default async function PostDetails({ params }: PageProps): Promise<React.
   return (
     <div className="p-6 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <div
-        dangerouslySetInnerHTML={{ __html: post.body }}
-        className="prose"
-      />
+      <div dangerouslySetInnerHTML={{ __html: post.body }} className="prose" />
     </div>
   );
 }
