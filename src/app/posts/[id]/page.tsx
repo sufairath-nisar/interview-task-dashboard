@@ -1,23 +1,7 @@
-// src/app/posts/[id]/page.tsx
+// app/posts/[id]/page.tsx
 import { getPostById, getPosts } from "@/lib/api";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 
-type PageParams = {
-  params: {
-    id: string;
-  };
-};
-
-// Optional: for SEO
-export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
-  const post = await getPostById(params.id);
-  return {
-    title: post?.title || "Post Not Found",
-  };
-}
-
-// Required for static generation
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({
@@ -25,8 +9,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// Page component
-export default async function PostDetails({ params }: PageParams) {
+export default async function Page({ params }: { params: { id: string } }) {
   const post = await getPostById(params.id);
 
   if (!post || post.id === undefined) {
