@@ -1,4 +1,4 @@
-# 🧩 JSONPlaceholder Dashboard
+## JSONPlaceholder Dashboard
 
 A frontend admin dashboard built with **Next.js**, **TailwindCSS**, **shadcn/ui**, and **React Query**, designed to manage posts using the [JSONPlaceholder API](https://jsonplaceholder.typicode.com/).
 
